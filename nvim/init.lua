@@ -627,7 +627,17 @@ cmp.setup {
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et=2
 
+-- tabstop manual porq el del plugin no funciona
 local set = vim.opt -- set options
 set.tabstop = 2
 set.softtabstop = 2
 set.shiftwidth = 2
+
+-- colorcolumn
+vim.cmd'set colorcolumn=80'
+
+-- mapings
+vim.keymap.set('i', '\\lt', '<', { silent = true, desc = 'inoremap para <' }) -- inoremap <
+vim.keymap.set('i', '\\gt', '>', { silent = true, desc = 'inoremap para >' }) -- inoremap >
+vim.keymap.set('n','<leader>qq',':q<CR>', { silent = true })
+vim.keymap.set('n','<leader>qQ',':x<CR>', { silent = true })
