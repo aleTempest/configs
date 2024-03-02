@@ -1,8 +1,16 @@
 return {
-	"craftzdog/solarized-osaka.nvim",
-	lazy = false,
-	config = function() 
-		vim.cmd.colorscheme'solarized-osaka'
-	end,
+	{
+		"craftzdog/solarized-osaka.nvim",
+		lazy = false,
+	},
+	{
+		"cocopon/iceberg.vim",
+		lazy = true,
+		enabled = false
+	},
+	{
+		"Tsuzat/NeoSolarized.nvim",
+		lazy = false,
+	},
 }
 

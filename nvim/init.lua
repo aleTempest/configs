@@ -627,6 +627,9 @@ cmp.setup {
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et=2
 
+vim.cmd.colorscheme'solarized-osaka'
+-- vim.cmd.colorscheme'NeoSolarized'
+
 -- tabstop manual porq el del plugin no funciona
 local set = vim.opt -- set options
 set.tabstop = 2
@@ -641,3 +644,6 @@ vim.keymap.set('i', '\\lt', '<', { silent = true, desc = 'inoremap para <' }) --
 vim.keymap.set('i', '\\gt', '>', { silent = true, desc = 'inoremap para >' }) -- inoremap >
 vim.keymap.set('n','<leader>qq',':q<CR>', { silent = true })
 vim.keymap.set('n','<leader>qQ',':x<CR>', { silent = true })
+vim.keymap.set('n','<leader>ai','`', { silent = true })
+vim.keymap.set('n','<leader>ll','<ESC>cw<<>><Esc>2hp', { silent = true })
+vim.keymap.set('i','\\ll','<><Esc>i', { silent = true })
