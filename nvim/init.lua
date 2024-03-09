@@ -163,10 +163,10 @@ require('lazy').setup({
 		-- See `:help lualine.txt`
 		opts = {
 			options = {
+				theme = 'solarized',
 				icons_enabled = false,
-				theme = 'auto',
-				component_separators = '|',
-				section_separators = '',
+				component_separators = { left = '', right = ''},
+				section_separators = { left = '', right = ''},
 			},
 		},
 	},
@@ -211,6 +211,9 @@ require('lazy').setup({
 			'nvim-treesitter/nvim-treesitter-textobjects',
 		},
 		build = ':TSUpdate',
+		opts = {
+			indent = true
+		},
 	},
 
 	-- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -532,10 +535,14 @@ require('mason-lspconfig').setup()
 local servers = {
 	-- clangd = {},
 	-- gopls = {},
-	-- pyright = {},
+	pyright = {},
 	-- rust_analyzer = {},
-	-- tsserver = {},
-	-- html = { filetypes = { 'html', 'twig', 'hbs'} },
+	tsserver = {},
+	html = { filetypes = { 'html', 'twig', 'hbs', 'php'} },
+	phpactor = { filetypes = { 'php' } },
+	intelephense = { filetypes = { 'php' } },
+	emmet_ls = { filetypes = { 'html','php'} },
+	-- emmet_language_server = { filetypes = { 'html','php'} },
 
 	lua_ls = {
 		Lua = {
@@ -629,6 +636,7 @@ cmp.setup {
 
 vim.cmd.colorscheme'solarized-osaka'
 -- vim.cmd.colorscheme'NeoSolarized'
+-- vim.cmd.colorscheme'ayu'
 
 -- tabstop manual porq el del plugin no funciona
 local set = vim.opt -- set options
@@ -647,3 +655,19 @@ vim.keymap.set('n','<leader>qQ',':x<CR>', { silent = true })
 vim.keymap.set('n','<leader>ai','`', { silent = true })
 vim.keymap.set('n','<leader>ll','<ESC>cw<<>><Esc>2hp', { silent = true })
 vim.keymap.set('i','\\ll','<><Esc>i', { silent = true })
+vim.keymap.set('i', 'ĸ', '<', { noremap = true })
+vim.keymap.set('i', 'ł', '>', { noremap = true })
+
+function feedKeys(keys)
+	local fkeys = vim.api.nvim_replace_termcodes(keys,true,false,true)
+	vim.api.nvim_feedkeys(fkeys,'n',true)
+end
+
+function cheese()
+	local buf = vim.api.nvim_get_current_buf()
+	vim.api.nvim_buf_set_option(buf,"filetype","html")
+	feedKeys("ggvG=")
+	vim.api.nvim_buf_set_option(buf,"filetype","php")
+end
+
+vim.keymap.set('n','<leader>ip',':lua cheese()<CR>', { silent = true })

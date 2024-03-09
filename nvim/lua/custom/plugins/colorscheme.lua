@@ -2,6 +2,9 @@ return {
 	{
 		"craftzdog/solarized-osaka.nvim",
 		lazy = false,
+		opts = {
+			hide_inactive_statusline = true,
+		}
 	},
 	{
 		"cocopon/iceberg.vim",
@@ -10,7 +13,20 @@ return {
 	},
 	{
 		"Tsuzat/NeoSolarized.nvim",
-		lazy = false,
+		lazy = true,
 	},
+	{
+		"neanias/everforest-nvim",
+		lazy = false
+	},
+	{
+		"Shatur/neovim-ayu",
+		lazy = false,
+		config = function ()
+			require('ayu').setup({
+				mirage = false,
+			})
+		end
+	}
 }
 
