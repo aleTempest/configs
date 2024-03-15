@@ -98,7 +98,7 @@ require('lazy').setup({
 						gs.next_hunk()
 					end)
 					return '<Ignore>'
-				end, { expr = true, desc = 'Jump to next hunk' })
+					end, { expr = true, desc = 'Jump to next hunk' })
 
 				map({ 'n', 'v' }, '[c', function()
 					if vim.wo.diff then
@@ -108,16 +108,16 @@ require('lazy').setup({
 						gs.prev_hunk()
 					end)
 					return '<Ignore>'
-				end, { expr = true, desc = 'Jump to previous hunk' })
+					end, { expr = true, desc = 'Jump to previous hunk' })
 
 				-- Actions
 				-- visual mode
 				map('v', '<leader>hs', function()
 					gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
-				end, { desc = 'stage git hunk' })
+					end, { desc = 'stage git hunk' })
 				map('v', '<leader>hr', function()
 					gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
-				end, { desc = 'reset git hunk' })
+					end, { desc = 'reset git hunk' })
 				-- normal mode
 				map('n', '<leader>hs', gs.stage_hunk, { desc = 'git stage hunk' })
 				map('n', '<leader>hr', gs.reset_hunk, { desc = 'git reset hunk' })
@@ -127,11 +127,11 @@ require('lazy').setup({
 				map('n', '<leader>hp', gs.preview_hunk, { desc = 'preview git hunk' })
 				map('n', '<leader>hb', function()
 					gs.blame_line { full = false }
-				end, { desc = 'git blame line' })
+					end, { desc = 'git blame line' })
 				map('n', '<leader>hd', gs.diffthis, { desc = 'git diff against index' })
 				map('n', '<leader>hD', function()
 					gs.diffthis '~'
-				end, { desc = 'git diff against last commit' })
+					end, { desc = 'git diff against last commit' })
 
 				-- Toggles
 				map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'toggle git blame line' })
@@ -163,8 +163,8 @@ require('lazy').setup({
 		-- See `:help lualine.txt`
 		opts = {
 			options = {
-				theme = 'solarized',
-				icons_enabled = false,
+				theme = 'auto',
+				icons_enabled = true,
 				component_separators = { left = '', right = ''},
 				section_separators = { left = '', right = ''},
 			},
@@ -633,8 +633,8 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et=2
-
-vim.cmd.colorscheme'solarized-osaka'
+-- vim.opt.background = "light"
+vim.cmd.colorscheme'onedark'
 -- vim.cmd.colorscheme'NeoSolarized'
 -- vim.cmd.colorscheme'ayu'
 
@@ -657,6 +657,7 @@ vim.keymap.set('n','<leader>ll','<ESC>cw<<>><Esc>2hp', { silent = true })
 vim.keymap.set('i','\\ll','<><Esc>i', { silent = true })
 vim.keymap.set('i', 'ĸ', '<', { noremap = true })
 vim.keymap.set('i', 'ł', '>', { noremap = true })
+vim.keymap.set('i', 'Ł', '->', { noremap = true })
 
 function feedKeys(keys)
 	local fkeys = vim.api.nvim_replace_termcodes(keys,true,false,true)
@@ -668,6 +669,7 @@ function cheese()
 	vim.api.nvim_buf_set_option(buf,"filetype","html")
 	feedKeys("ggvG=")
 	vim.api.nvim_buf_set_option(buf,"filetype","php")
+	feedKeys("ggvG=<Ctrl-o>")
 end
 
 vim.keymap.set('n','<leader>ip',':lua cheese()<CR>', { silent = true })

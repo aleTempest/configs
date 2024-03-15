@@ -7,26 +7,15 @@ return {
 		}
 	},
 	{
-		"cocopon/iceberg.vim",
-		lazy = true,
-		enabled = false
-	},
-	{
-		"Tsuzat/NeoSolarized.nvim",
-		lazy = true,
-	},
-	{
-		"neanias/everforest-nvim",
-		lazy = false
-	},
-	{
-		"Shatur/neovim-ayu",
+		"ellisonleao/gruvbox.nvim",
 		lazy = false,
-		config = function ()
-			require('ayu').setup({
-				mirage = false,
-			})
-		end
-	}
+		opts = {
+			terminal_colors = true,
+			contrast = "medium",
+		}
+	},
+	{
+		'navarasu/onedark.nvim'
+	},
 }
 
