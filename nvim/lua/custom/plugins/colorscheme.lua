@@ -15,7 +15,8 @@ return {
 		}
 	},
 	{
-		'navarasu/onedark.nvim'
+		'navarasu/onedark.nvim',
+    'NTBBloodbath/doom-one.nvim',
 	},
 }
 

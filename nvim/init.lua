@@ -658,6 +658,7 @@ vim.keymap.set('i','\\ll','<><Esc>i', { silent = true })
 vim.keymap.set('i', 'ĸ', '<', { noremap = true })
 vim.keymap.set('i', 'ł', '>', { noremap = true })
 vim.keymap.set('i', 'Ł', '->', { noremap = true })
+vim.keymap.set('n','<leader>ip',':lua cheese()<CR>', { silent = true })
 
 function feedKeys(keys)
 	local fkeys = vim.api.nvim_replace_termcodes(keys,true,false,true)
@@ -672,4 +673,4 @@ function cheese()
 	feedKeys("ggvG=<Ctrl-o>")
 end
 
-vim.keymap.set('n','<leader>ip',':lua cheese()<CR>', { silent = true })
+vim.opt.wrap = true

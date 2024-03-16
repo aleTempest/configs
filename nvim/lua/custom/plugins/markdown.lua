@@ -1,6 +1,4 @@
 return {
-	-- { "Furkanzmc/zettelkasten.nvim", enabled = false },
-	-- { "ixru/nvim-markdown", enabled = false },
 	{ "3rd/image.nvim" },
 	{
 		"epwalsh/obsidian.nvim",
@@ -14,6 +12,9 @@ return {
 					path = "~/Desktop/cia"
 				},
 			}
-		}
+		},
+		config = function ()
+			vim.opt.conceallevel = 1
+		end
 	}
 }
