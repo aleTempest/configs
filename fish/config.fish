@@ -1,17 +1,18 @@
 set -g fish_greeting
 set -gx EDITOR nvim
-
+set LFCD 
 
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/share/bob/nvim-bin
 fish_add_path ~/.local/bin
+# fish_add_path ~/.config/composer/vendor/bin/
 
+alias lf="lfcd"
+alias gitlog="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+alias paru="paru --bottomup"
 alias vi="nvim"
 alias ll="exa -hla"
 alias ls="exa"
-alias conf="cd ~/.config/"
-alias fcf="nvim ~/.config/fish/config.fish"
-alias nvc="nvim ~/.config/nvim/init.lua"
 alias fd="fdfind"
 
 function extract
@@ -42,3 +43,4 @@ function subir
 	git commit -m "update"
 	git push -u origin master
 end
+
