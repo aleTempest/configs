@@ -761,7 +761,11 @@ require('lazy').setup({
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
-vim.cmd.colorscheme 'onedark'
+vim.opt.ts = 2
+vim.opt.sts = 2
+vim.opt.sw = 2
+
+vim.cmd.colorscheme 'oxocarbon'
 vim.opt.conceallevel = 1
 vim.cmd 'set colorcolumn=80'
 vim.keymap.set('i', '\\lt', '<', { silent = true, desc = 'inoremap para <' }) -- inoremap <

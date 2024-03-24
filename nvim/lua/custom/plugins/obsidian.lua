@@ -20,11 +20,7 @@ return {
     workspaces = {
       {
         name = 'cia',
-        path = '~/Desktop/cia/',
-      },
-      {
-        name = 'work',
-        path = '~/vaults/work',
+        path = '~/desk/cia/',
       },
     },
 
