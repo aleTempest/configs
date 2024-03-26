@@ -1,5 +1,6 @@
 return {
   { 'nyoom-engineering/oxocarbon.nvim' },
+  { 'shaunsingh/nord.nvim' },
   {
     'nvim-lualine/lualine.nvim',
 
@@ -10,4 +11,5 @@ return {
       },
     },
   },
+  { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
 }

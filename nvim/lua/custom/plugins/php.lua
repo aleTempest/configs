@@ -52,7 +52,7 @@ return {
   },
   opts = {
     install = {
-      bin = '/usr/bin/phpactor',
+      bin = '~/.local/bin/phpactor',
     },
     lspconfig = {
       enabled = false,

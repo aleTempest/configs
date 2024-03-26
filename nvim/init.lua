@@ -761,11 +761,24 @@ require('lazy').setup({
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
+function feedKeys(keys)
+  local fkeys = vim.api.nvim_replace_termcodes(keys, true, false, true)
+  vim.api.nvim_feedkeys(fkeys, 'n', true)
+end
+
+function cheese()
+  local buf = vim.api.nvim_get_current_buf()
+  vim.api.nvim_buf_set_option(buf, 'filetype', 'html')
+  feedKeys 'ggvG='
+  vim.api.nvim_buf_set_option(buf, 'filetype', 'php')
+  feedKeys 'ggvG=<Ctrl-o>'
+end
+
 vim.opt.ts = 2
 vim.opt.sts = 2
 vim.opt.sw = 2
 
-vim.cmd.colorscheme 'oxocarbon'
+vim.cmd.colorscheme 'nord'
 vim.opt.conceallevel = 1
 vim.cmd 'set colorcolumn=80'
 vim.keymap.set('i', '\\lt', '<', { silent = true, desc = 'inoremap para <' }) -- inoremap <
