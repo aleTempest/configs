@@ -1,0 +1,43 @@
+* {
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 15;
+}
+
+.modules-center {
+  margin-top: 6px;
+  margin-bottom: 3px;
+}
+
+.modules-right, .modules-center, .modules-left {
+  color: #abb2bf;
+}
+
+.modules-right {
+  margin-right: 10px;
+}
+
+.modules-left {
+  margin-left: 5px;
+}
+
+window#waybar {
+  background: #282c34;
+}
+
+.modules-right * {
+  margin-left: 20px;
+}
+
+#workspaces button {
+  padding: 0;
+  border-radius: 0;
+}
+
+#workspaces button.focused {
+  background: #98c379;
+  color: #282c34;
+}
+
+#mode {
+  margin-left: 30px;
+}

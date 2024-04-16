@@ -450,6 +450,8 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        html = { filetypes = { 'html', 'php' } },
+        emmet_ls = { filetypes = { 'html', 'php' } },
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
@@ -496,6 +498,7 @@ require('lazy').setup({
         'emmet_ls',
         'html',
         'tsserver',
+        'html',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -766,6 +769,17 @@ function feedKeys(keys)
   vim.api.nvim_feedkeys(fkeys, 'n', true)
 end
 
+-- TODO Usar luasnip mejor
+-- TODO Arreglar
+function setter()
+  feedKeys '$hbywGo<ESC>pIpublic set<ESC>lvUA() {<CR><TAB>$this-><ESC>p = <CR> }'
+end
+
+-- Funciona
+function getter()
+  feedKeys '$hbywGo<ESC>pIpublic get<ESC>lvUA() {<CR>return <ESC>pbi$<ESC>I<TAB><ESC>o}<ESC>'
+end
+
 function cheese()
   local buf = vim.api.nvim_get_current_buf()
   vim.api.nvim_buf_set_option(buf, 'filetype', 'html')
@@ -774,11 +788,11 @@ function cheese()
   feedKeys 'ggvG=<Ctrl-o>'
 end
 
-vim.opt.ts = 2
-vim.opt.sts = 2
-vim.opt.sw = 2
+function pdflatex()
+  vim.cmd.normal ':!pdflatex -interaction nonstopmode -shell-escape -synctex=1 %<CR>'
+end
 
-vim.cmd.colorscheme 'nord'
+vim.cmd.colorscheme 'solarized-osaka'
 vim.opt.conceallevel = 1
 vim.cmd 'set colorcolumn=80'
 vim.keymap.set('i', '\\lt', '<', { silent = true, desc = 'inoremap para <' }) -- inoremap <
@@ -788,3 +802,23 @@ vim.keymap.set('i', 'ĸ', '<', { noremap = true })
 vim.keymap.set('i', 'ł', '>', { noremap = true })
 vim.keymap.set('i', 'Ł', '->', { noremap = true })
 vim.keymap.set('n', '<leader>ip', ':lua cheese()<CR>', { silent = true })
+vim.keymap.set('n', '<leader>cpe', ':Copilot enable<CR>', { silent = true })
+vim.keymap.set('n', '<leader>cpd', ':Copilot disable<CR>', { silent = true })
+vim.keymap.set('n', '<leader>pc', ':PhpActor context_menu<cr>', { silent = true })
+vim.keymap.set('n', '<C-t>', ':NvimTreeToggle<CR>', { silent = true })
+-- vim.keymap.set('n', '<C-c><C-c>', ':lua pdflatex()<CR>', { silent = false })
+
+vim.cmd [[
+augroup PHBSCF
+    autocmd!
+    autocmd BufWritePost,BufReadPost,InsertLeave *.php :lua require'phpcs'.cs()
+    autocmd BufWritePost *.php :lua require'phpcs'.cbf()
+augroup END
+let g:nvim_phpcs_config_phpcs_path = 'phpcs'
+let g:nvim_phpcs_config_phpcbf_path = 'phpcbf'
+let g:nvim_phpcs_config_phpcs_standard = 'PSR2' " or path to your ruleset phpcs.xml
+]]
+
+vim.opt.ts = 2
+vim.opt.sts = 2
+vim.opt.sw = 2

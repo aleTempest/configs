@@ -52,10 +52,33 @@ return {
   },
   opts = {
     install = {
-      bin = '~/.local/bin/phpactor',
+      -- bin = '~/.local/bin/phpactor',
+      -- bin = 'phpactor',
+      bin = '/nix/store/86ypxhfya7k0pkfnw1rmzdf1s57ydnqs-user-environment/bin/phpactor',
     },
     lspconfig = {
       enabled = false,
     },
+  },
+  {
+    'adalessa/laravel.nvim',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+      'tpope/vim-dotenv',
+      'MunifTanjim/nui.nvim',
+      'nvimtools/none-ls.nvim',
+    },
+    cmd = { 'Sail', 'Artisan', 'Composer', 'Npm', 'Yarn', 'Laravel' },
+    keys = {
+      { '<leader>la', ':Laravel artisan<cr>' },
+      { '<leader>lr', ':Laravel routes<cr>' },
+      { '<leader>lm', ':Laravel related<cr>' },
+    },
+    event = { 'VeryLazy' },
+    config = true,
+  },
+  {
+    'praem90/nvim-phpcsf',
+    lazy = true,
   },
 }
