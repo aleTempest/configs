@@ -1,25 +1,22 @@
 @import url("/home/ale/.config/waybar/base.css");
+@import url("/home/ale/.config/waybar/everforest.css");
 
 * {
-  font-size: 15px;
+  font-size: 14px;
   font-family: Rubik;
+  border-radius: 7px;
 }
 
 .modules-right,
 .modules-center,
 .modules-left {
-  color: @base3
+  color: @foreground;
+  background: @background;
+  margin: 5px;
 }
 
-.modules-right,
-.modules-left {}
-
-.modules-right {
-  margin-right: 10px;
-}
-
-.modules-left {
-  margin-left: 5px;
+.modules-center {
+  padding: 10px;
 }
 
 window#waybar {
@@ -27,7 +24,7 @@ window#waybar {
 }
 
 .modules-right * {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 #workspaces button {
@@ -48,4 +45,20 @@ window#waybar {
 
 #mode {
   margin-left: 30px;
+}
+
+#network {
+  color: @purple;
+}
+
+#pulseaudio {
+  color: @blue;
+}
+
+#battery {
+  color: @aqua;
+}
+
+#clock {
+  color: @green;
 }
