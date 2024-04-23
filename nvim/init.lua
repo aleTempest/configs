@@ -494,7 +494,7 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
-        'phpactor',
+        -- 'phpactor',
         'emmet_ls',
         'html',
         'tsserver',
@@ -792,7 +792,7 @@ function pdflatex()
   vim.cmd.normal ':!pdflatex -interaction nonstopmode -shell-escape -synctex=1 %<CR>'
 end
 
-vim.cmd.colorscheme 'solarized-osaka'
+vim.cmd.colorscheme 'gruvbox-material'
 vim.opt.conceallevel = 1
 vim.cmd 'set colorcolumn=80'
 vim.keymap.set('i', '\\lt', '<', { silent = true, desc = 'inoremap para <' }) -- inoremap <
@@ -804,9 +804,7 @@ vim.keymap.set('i', 'Ł', '->', { noremap = true })
 vim.keymap.set('n', '<leader>ip', ':lua cheese()<CR>', { silent = true })
 vim.keymap.set('n', '<leader>cpe', ':Copilot enable<CR>', { silent = true })
 vim.keymap.set('n', '<leader>cpd', ':Copilot disable<CR>', { silent = true })
-vim.keymap.set('n', '<leader>pc', ':PhpActor context_menu<cr>', { silent = true })
 vim.keymap.set('n', '<C-t>', ':NvimTreeToggle<CR>', { silent = true })
--- vim.keymap.set('n', '<C-c><C-c>', ':lua pdflatex()<CR>', { silent = false })
 
 vim.cmd [[
 augroup PHBSCF

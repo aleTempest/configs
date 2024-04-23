@@ -1,16 +1,18 @@
+@import url("/home/ale/.config/waybar/base.css");
+
 * {
-  font-family: JetBrainsMono Nerd Font;
-  font-size: 15;
+  font-size: 15px;
+  font-family: Rubik;
 }
 
-.modules-center {
-  margin-top: 6px;
-  margin-bottom: 3px;
+.modules-right,
+.modules-center,
+.modules-left {
+  color: @base3
 }
 
-.modules-right, .modules-center, .modules-left {
-  color: #abb2bf;
-}
+.modules-right,
+.modules-left {}
 
 .modules-right {
   margin-right: 10px;
@@ -21,7 +23,7 @@
 }
 
 window#waybar {
-  background: #282c34;
+  background: transparent;
 }
 
 .modules-right * {
@@ -29,13 +31,19 @@ window#waybar {
 }
 
 #workspaces button {
+  margin: 5px;
   padding: 0;
   border-radius: 0;
+  background: transparent;
+  color: @foreground;
 }
 
 #workspaces button.focused {
-  background: #98c379;
-  color: #282c34;
+  color: @yellow;
+}
+
+#workspaces button.active {
+  color: @yellow;
 }
 
 #mode {

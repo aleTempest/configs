@@ -1,0 +1,7 @@
+### Solarized
+# Property Name             Border  BG      Text    Indicator Child-border
+client.focused              #839496 #839496  #839496  #839496 #839496
+client.focused_inactive     #002b36 #002b36 #002b36 #002b36   #002b36
+client.unfocused            #002b36 #002b36 #002b36 #002b36   #002b36
+client.urgent               #dc322f #dc322f  #dc322f  #dc322f    #dc322f
+client.placeholder          #859900 #859900 #859900 #859900   #859900

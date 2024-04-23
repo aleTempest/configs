@@ -1,5 +1,5 @@
 import = [
-	"~/.config/alacritty/doom_one.toml"
+	"~/.config/alacritty/themes/themes/gruvbox_material.toml"
 ]
 
 [env]
@@ -28,4 +28,6 @@ style = "Italic"
 family = "Iosevka Nerd Font"
 style = "Regular"
 
-# [general]
+[window.padding]
+x = 20
+y = 5

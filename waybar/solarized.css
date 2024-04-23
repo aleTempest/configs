@@ -1,0 +1,15 @@
+@define-color base03 rgb (0, 43 ,54);
+@define-color base02 rgb (0,43,54);
+@define-color base00 rgb (101,123,131);
+@define-color base0  rgb (131,148,150);
+@define-color base1  rgb (147,161,161);
+@define-color base2  rgb (238,232,213);
+@define-color base3  rgb (253,246,227);
+@define-color yellow rgb (181,137,0);
+@define-color orange rgb (203,75 ,22);
+@define-color red  rgb (220,50 ,47);
+@define-color magenta rgb (211,54 ,130);
+@define-color violet rgb (108,113,196);
+@define-color blue rgb (38 ,139,210);
+@define-color cyan rgb (42 ,161,152);
+@define-color green rgb (133,153,0);
