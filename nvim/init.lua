@@ -788,11 +788,11 @@ function cheese()
   feedKeys 'ggvG=<Ctrl-o>'
 end
 
+-- si latex no esta con nix, es mejor usar vimtex
 function pdflatex()
   vim.cmd.normal ':!pdflatex -interaction nonstopmode -shell-escape -synctex=1 %<CR>'
 end
 
-vim.cmd.colorscheme 'gruvbox-material'
 vim.opt.conceallevel = 1
 vim.cmd 'set colorcolumn=80'
 vim.keymap.set('i', '\\lt', '<', { silent = true, desc = 'inoremap para <' }) -- inoremap <
@@ -820,3 +820,6 @@ let g:nvim_phpcs_config_phpcs_standard = 'PSR2' " or path to your ruleset phpcs.
 vim.opt.ts = 2
 vim.opt.sts = 2
 vim.opt.sw = 2
+
+vim.cmd "let g:gruvbox_material_background = 'hard'"
+vim.cmd.colorscheme 'gruvbox-material'

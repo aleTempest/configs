@@ -2,8 +2,8 @@
 @import url("/home/ale/.config/waybar/everforest.css");
 
 * {
-  font-size: 14px;
   font-family: Rubik;
+  font-size: 14px;
   border-radius: 7px;
 }
 
@@ -13,10 +13,7 @@
   color: @foreground;
   background: @background;
   margin: 5px;
-}
-
-.modules-center {
-  padding: 10px;
+  padding: 7px;
 }
 
 window#waybar {
@@ -60,5 +57,10 @@ window#waybar {
 }
 
 #clock {
-  color: @green;
+  color: @yellow;
+}
+
+#window {
+  color: @orange;
+  margin-left: 15px;
 }

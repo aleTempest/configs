@@ -1,8 +1,8 @@
 {
 	"layer": "top",
-		"modules-left": ["hyprland/workspaces","sway/workspaces", "sway/mode"],
-		"modules-center": ["sway/window", "hyprland/window"],
-		"modules-right": ["network", "pulseaudio", "sway/language", "battery", "clock"],
+		"modules-left": ["hyprland/workspaces","sway/workspaces", "sway/mode",  "hyprland/window",],
+		"modules-center": ["sway/window", "clock"],
+		"modules-right": ["pulseaudio", "sway/language", "battery", "network", "test"],
 		"sway/window": {
 			"max-length": 50
 		},
@@ -21,7 +21,7 @@
 			"tooltip-format": "{capacity}% - {timeTo}"
 		},
 		"clock": {
-			"format": "{:%a, %d. %b  %H:%M}   "
+			"format": "{:%a, %d. %b  %H:%M}  "
 		},
 		"network": {
 			"format-wifi": "{essid}    ",
@@ -53,8 +53,8 @@
 				"default": [" ", " "]
 			},
 			"scroll-step": 1,
-			"on-click": "pavucontrol",
+			"on-click": "alacritty -e ncpamixer",
 			"on-click-middle": "amixer set Master toggle",
 			"tooltip": false
-		}
+		},
 }
