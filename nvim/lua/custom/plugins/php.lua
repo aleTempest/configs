@@ -42,6 +42,7 @@ end
 
 return {
   'adalessa/phpactor.nvim',
+  enabled = false,
   cmd = { 'PhpActor' },
   keys = {
     { '<leader>pa', phpactor, desc = 'PhpActor options' },
@@ -62,6 +63,7 @@ return {
   },
   {
     'adalessa/laravel.nvim',
+    enabled = false,
     dependencies = {
       'nvim-telescope/telescope.nvim',
       'tpope/vim-dotenv',
@@ -79,6 +81,18 @@ return {
   },
   {
     'praem90/nvim-phpcsf',
-    lazy = true,
+    -- aplicar el plugin cada que se guarda el buffer
+    config = function()
+      vim.cmd [[
+      augroup PHBSCF
+      autocmd!
+      autocmd BufWritePost,BufReadPost,InsertLeave *.php :lua require'phpcs'.cs()
+      autocmd BufWritePost *.php :lua require'phpcs'.cbf()
+      augroup END
+      let g:nvim_phpcs_config_phpcs_path = 'phpcs'
+      let g:nvim_phpcs_config_phpcbf_path = 'phpcbf'
+      let g:nvim_phpcs_config_phpcs_standard = 'PSR2' " or path to your ruleset phpcs.xml
+      ]]
+    end,
   },
 }

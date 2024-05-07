@@ -454,7 +454,7 @@ require('lazy').setup({
         emmet_ls = { filetypes = { 'html', 'php' } },
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = { 'py' },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -494,7 +494,8 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
-        -- 'phpactor',
+        'phpactor',
+        'intelephense',
         'emmet_ls',
         'html',
         'tsserver',
@@ -693,16 +694,15 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'kotlin', 'sql', 'php', 'javascript' },
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'kotlin', 'sql', 'php', 'javascript', 'norg' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
-        enable = false,
-
+        enable = true,
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
         --  If you are experiencing weird indenting issues, add the language to
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
+        additional_vim_regex_highlighting = { 'ruby', 'markdown' },
       },
       indent = { enable = true, disable = { 'ruby' } },
     },
@@ -764,6 +764,7 @@ require('lazy').setup({
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
+-- recibe como string una serie de inputs y las ejecuta
 function feedKeys(keys)
   local fkeys = vim.api.nvim_replace_termcodes(keys, true, false, true)
   vim.api.nvim_feedkeys(fkeys, 'n', true)
@@ -793,8 +794,11 @@ function pdflatex()
   vim.cmd.normal ':!pdflatex -interaction nonstopmode -shell-escape -synctex=1 %<CR>'
 end
 
-vim.opt.conceallevel = 1
+-- no me acuerdo
+vim.opt.conceallevel = 2
 vim.cmd 'set colorcolumn=80'
+
+-- remaps raros
 vim.keymap.set('i', '\\lt', '<', { silent = true, desc = 'inoremap para <' }) -- inoremap <
 vim.keymap.set('i', '\\gt', '>', { silent = true, desc = 'inoremap para >' }) -- inoremap >
 vim.keymap.set('i', '¢', '`', { silent = true })
@@ -806,20 +810,9 @@ vim.keymap.set('n', '<leader>cpe', ':Copilot enable<CR>', { silent = true })
 vim.keymap.set('n', '<leader>cpd', ':Copilot disable<CR>', { silent = true })
 vim.keymap.set('n', '<C-t>', ':NvimTreeToggle<CR>', { silent = true })
 
-vim.cmd [[
-augroup PHBSCF
-    autocmd!
-    autocmd BufWritePost,BufReadPost,InsertLeave *.php :lua require'phpcs'.cs()
-    autocmd BufWritePost *.php :lua require'phpcs'.cbf()
-augroup END
-let g:nvim_phpcs_config_phpcs_path = 'phpcs'
-let g:nvim_phpcs_config_phpcbf_path = 'phpcbf'
-let g:nvim_phpcs_config_phpcs_standard = 'PSR2' " or path to your ruleset phpcs.xml
-]]
-
 vim.opt.ts = 2
 vim.opt.sts = 2
 vim.opt.sw = 2
 
-vim.cmd "let g:gruvbox_material_background = 'hard'"
-vim.cmd.colorscheme 'gruvbox-material'
+-- vim.cmd "let g:gruvbox_material_background = 'hard'"
+vim.cmd.colorscheme 'onedark'
