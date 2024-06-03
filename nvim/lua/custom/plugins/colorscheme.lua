@@ -1,27 +1,35 @@
 return {
-  { 'ellisonleao/gruvbox.nvim' },
-  { 'nyoom-engineering/oxocarbon.nvim' },
-  { 'shaunsingh/nord.nvim' },
+  {
+    'ellisonleao/gruvbox.nvim',
+    config = function()
+      -- vim.o.background = 'dark'
+      -- vim.cmd 'colorscheme gruvbox'
+    end,
+  },
   {
     'craftzdog/solarized-osaka.nvim',
     lazy = false,
     priority = 1000,
-    opts = {},
+    opts = {
+      transparent = true,
+      terminal_colors = true,
+      styles = {
+        comments = { italic = true },
+        keywords = { italic = true },
+        functions = {},
+        variables = {},
+      },
+    },
   },
-  { 'NTBBloodbath/doom-one.nvim' },
   {
-    'neanias/everforest-nvim',
-    version = false,
-    lazy = false,
-    priority = 1000, -- make sure to load this before all the other start plugins
-    -- Optional; default configuration will be used if setup isn't called.
+    'zaldih/themery.nvim',
     config = function()
-      require('everforest').setup {
-        -- Your config here
+      -- Minimal config
+      require('themery').setup {
+        themes = { 'gruvbox', 'solarized', 'solarized-day' },
+        themeConfigFile = '~/.config/nvim/lua/settings/theme.lua',
+        livePreview = true,
       }
     end,
-  },
-  {
-    'sainnhe/gruvbox-material',
   },
 }
